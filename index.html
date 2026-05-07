@@ -25,6 +25,7 @@
     .container {
       width: 100%;
       max-width: 400px;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -61,6 +62,7 @@
       font-weight: bold;
       color: #1a1a2e;
       margin-bottom: 4px;
+      word-break: break-all;
     }
 
     .header .account-holder {
@@ -142,6 +144,8 @@
       font-size: 17px;
       color: #5a7fd6;
       text-decoration: none;
+      word-break: break-all;
+      overflow-wrap: break-word;
     }
 
     .news-item .news-link:hover {
