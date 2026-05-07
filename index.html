@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>송림종합사회복지관</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fff8c5;
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* 헤더 */
+    .header {
+      text-align: center;
+      color: #1a1a2e;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .header .divider {
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .header .account-label {
+      font-size: 21px;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .header .account-number {
+      font-size: 23px;
+      font-weight: bold;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .header .account-holder {
+      font-size: 21px;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+    }
+
+    /* 복사 버튼 */
+    .copy-btn {
+      background-color: #1a1a2e;
+      color: #fff8c5;
+      border: none;
+      border-radius: 28px;
+      padding: 16px 48px;
+      font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .copy-btn:hover {
+      background-color: #2e2e4e;
+    }
+
+    .copy-toast {
+      visibility: hidden;
+      font-size: 25px;
+      color: #1a1a2e;
+      margin-top: 6px;
+      margin-bottom: 30px;
+    }
+
+    /* 카드 공통 */
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    /* 소식 카드 */
+    .news-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .news-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .news-item .news-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .news-item .news-desc {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .news-item .news-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 17px;
+      color: #5a7fd6;
+      text-decoration: none;
+    }
+
+    .news-item .news-link:hover {
+      text-decoration: underline;
+    }
+
+    .news-item .news-link::before {
+      content: "🌐";
+      font-size: 17px;
+    }
+
+    /* 로고 카드 */
+    .logo-card {
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 헤더 -->
+    <div class="header">
+      <h1>송림종합사회복지관</h1>
+      <p class="divider"></p>
+      <p class="account-label">복사 후 붙여넣기 해주세요.</p>
+      <p class="account-number">418-048059-01-014 (기업은행)</p>
+      <p class="account-holder">예금주 : 송림종합사회복지관</p>
+      <button class="copy-btn" onclick="copyAccount()">계좌번호 복사</button>
+      <p class="copy-toast" id="toast">✅ 복사되었습니다!</p>
+    </div>
+
+    <!-- 소식 카드 -->
+    <div class="card">
+      <p class="card-title">송림복지관 소식</p>
+      <div class="news-item">
+        <p class="news-title">송림종합사회복지관</p>
+        <p class="news-desc">송림종합사회복지관 홈페이지에 오신것을 환영합니다.</p>
+        <a class="news-link" href="http://www.songrim.or.kr/" target="_blank">http://www.songrim.or.kr/</a>
+      </div>
+    </div>
+
+    <!-- 로고 카드 -->
+    <div class="card logo-card">
+      <div class="logo-icon">
+        <img src="songlim_logo.png" alt="송림종합사회복지관 로고" />
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function copyAccount() {
+      const accountNumber = "418-048059-01-014";
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        const toast = document.getElementById("toast");
+        toast.style.visibility = "visible";
+        setTimeout(() => {
+          toast.style.visibility = "hidden";
+        }, 4000);
+      }).catch(() => {
+        // fallback for older browsers
+        const el = document.createElement("textarea");
+        el.value = accountNumber;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+        const toast = document.getElementById("toast");
+        toast.style.visibility = "visible";
+        setTimeout(() => {
+          toast.style.visibility = "hidden";
+        }, 4000);
+      });
+    }
+  </script>
+</body>
+</html>
