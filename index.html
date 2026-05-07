@@ -19,6 +19,7 @@
       justify-content: center;
       align-items: flex-start;
       padding: 40px 16px;
+      overflow-x: hidden;
     }
 
     .container {
@@ -37,9 +38,10 @@
     }
 
     .header h1 {
-      font-size: 32px;
+      font-size: clamp(22px, 7vw, 32px);
       font-weight: bold;
       margin-bottom: 30px;
+      word-break: keep-all;
     }
 
     .header .divider {
@@ -49,20 +51,20 @@
     }
 
     .header .account-label {
-      font-size: 21px;
+      font-size: clamp(15px, 4.5vw, 21px);
       color: #1a1a2e;
       margin-bottom: 4px;
     }
 
     .header .account-number {
-      font-size: 23px;
+      font-size: clamp(16px, 5vw, 23px);
       font-weight: bold;
       color: #1a1a2e;
       margin-bottom: 4px;
     }
 
     .header .account-holder {
-      font-size: 21px;
+      font-size: clamp(15px, 4.5vw, 21px);
       color: #1a1a2e;
       margin-bottom: 14px;
     }
@@ -73,11 +75,12 @@
       color: #fff8c5;
       border: none;
       border-radius: 28px;
-      padding: 16px 48px;
-      font-size: 25px;
+      padding: 14px 8vw;
+      font-size: clamp(17px, 5.5vw, 25px);
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.2s;
+      max-width: 100%;
     }
 
     .copy-btn:hover {
@@ -86,7 +89,7 @@
 
     .copy-toast {
       visibility: hidden;
-      font-size: 25px;
+      font-size: clamp(17px, 5.5vw, 25px);
       color: #1a1a2e;
       margin-top: 6px;
       margin-bottom: 30px;
